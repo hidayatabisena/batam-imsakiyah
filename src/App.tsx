@@ -154,23 +154,29 @@ function App() {
                       </tr>
                     </thead>
                     <tbody>
-                      {schedules.map((schedule) => {
-                        const date = new Date(schedule.date);
-                        const formattedDate = date.toLocaleDateString('id-ID', {
-                          day: 'numeric',
-                          month: 'short'
-                        });
-                        
-                        return (
-                          <tr key={schedule.day} className="border-b hover:bg-gray-50">
-                            <td className="py-2 px-3">{schedule.day}</td>
-                            <td className="py-2 px-3">{formattedDate}</td>
-                            <td className="py-2 px-3 font-medium">{schedule.prayerTimes.find(p => p.name === 'Imsak')?.time}</td>
-                            <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Subuh')?.time}</td>
-                            <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Maghrib')?.time}</td>
-                          </tr>
-                        );
-                      })}
+                      {schedules
+                        .filter(schedule => {
+                          // Only include March dates (Ramadhan starts on March 1st)
+                          const date = new Date(schedule.date);
+                          return date.getMonth() === 2; // March is month 2 (0-indexed)
+                        })
+                        .map((schedule, index) => {
+                          const date = new Date(schedule.date);
+                          const formattedDate = date.toLocaleDateString('id-ID', {
+                            day: 'numeric',
+                            month: 'short'
+                          });
+                          
+                          return (
+                            <tr key={schedule.day} className="border-b hover:bg-gray-50">
+                              <td className="py-2 px-3">{index + 1}</td>
+                              <td className="py-2 px-3">{formattedDate}</td>
+                              <td className="py-2 px-3 font-medium">{schedule.prayerTimes.find(p => p.name === 'Imsak')?.time}</td>
+                              <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Subuh')?.time}</td>
+                              <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Maghrib')?.time}</td>
+                            </tr>
+                          );
+                        })}
                     </tbody>
                   </table>
                 </div>
