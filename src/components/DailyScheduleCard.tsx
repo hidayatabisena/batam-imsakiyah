@@ -52,9 +52,16 @@ const DailyScheduleCard: React.FC<DailyScheduleCardProps> = ({ schedule, current
     <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-gray-800">
-          Ramadhan Hari ke-{schedule.day-1}
+          Ramadhan Hari ke-{schedule.day}
         </h2>
-        <p className="text-gray-600">{formattedDate}</p>
+        <p className="text-gray-600">
+          {currentTime.toLocaleDateString('id-ID', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          })}
+        </p>
       </div>
       
       <div className="space-y-3">
