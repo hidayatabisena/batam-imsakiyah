@@ -154,7 +154,7 @@ function App() {
                       </tr>
                     </thead>
                     <tbody>
-                      {schedules.slice(0, 10).map((schedule) => {
+                      {schedules.slice(1, 11).map((schedule) => {
                         const date = new Date(schedule.date);
                         const formattedDate = date.toLocaleDateString('id-ID', {
                           day: 'numeric',
@@ -163,7 +163,7 @@ function App() {
                         
                         return (
                           <tr key={schedule.day} className="border-b hover:bg-gray-50">
-                            <td className="py-2 px-3">{schedule.day}</td>
+                            <td className="py-2 px-3">{schedule.day-1}</td>
                             <td className="py-2 px-3">{formattedDate}</td>
                             <td className="py-2 px-3 font-medium">{schedule.prayerTimes.find(p => p.name === 'Imsak')?.time}</td>
                             <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Subuh')?.time}</td>

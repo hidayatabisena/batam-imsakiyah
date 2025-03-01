@@ -52,7 +52,7 @@ const DailyScheduleCard: React.FC<DailyScheduleCardProps> = ({ schedule, current
     <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-gray-800">
-          Ramadhan Hari ke-{schedule.day}
+          Ramadhan Hari ke-{schedule.day-1}
         </h2>
         <p className="text-gray-600">{formattedDate}</p>
       </div>

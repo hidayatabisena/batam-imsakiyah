@@ -37,28 +37,26 @@ export const formatTimeRemaining = (targetTime: string, currentTime: Date): stri
  * Ramadhan 2025 starts on March 1st
  */
 export const convertToDailySchedule = (imsakiyahDays: ImsakiyahDay[], year: string, month: number): DailySchedule[] => {
-  // Filter days for the specified month (March is month 3)
-  const monthDays = imsakiyahDays.filter(day => {
-    // For March 2025, Ramadhan starts on the 1st
-    return day.tanggal >= 1 && day.tanggal <= 31;
+  // Create a copy of the array to avoid modifying the original
+  // Filter to only include days from March (month 3)
+  const marchDays = imsakiyahDays.filter(day => {
+    // Only include days from March 1st onwards (Ramadhan starts on March 1st)
+    const date = new Date(parseInt(year), month - 1, day.tanggal);
+    return date.getMonth() === month - 1 && date.getDate() >= 1;
   });
   
-  // Sort by date to ensure correct order
-  const sortedDays = [...monthDays].sort((a, b) => a.tanggal - b.tanggal);
+  const sortedDays = marchDays.sort((a, b) => a.tanggal - b.tanggal);
   
   return sortedDays.map((day) => {
-    // Create a date string in YYYY-MM-DD format
-    // Month is 0-indexed in JavaScript Date, so we use month-1
     const date = new Date(parseInt(year), month - 1, day.tanggal);
     const dateString = date.toISOString().split('T')[0];
     
-    // Calculate Ramadhan day - for March 2025, day 1 of Ramadhan is March 1st
-    // So the Ramadhan day is the same as the date in March
+    // Since we're only including March days, the Ramadhan day is the same as the date
     const ramadhanDay = day.tanggal;
     
     return {
       date: dateString,
-      day: ramadhanDay, // Ramadhan day (1-based, starting from March 1st)
+      day: ramadhanDay,
       prayerTimes: [
         { name: "Imsak", time: day.imsak, arabicName: "إمساك" },
         { name: "Subuh", time: day.subuh, arabicName: "صبح" },
