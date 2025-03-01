@@ -1,6 +1,6 @@
 import { DailySchedule } from '../types';
 
-// Ramadhan 2025 prayer times (approximate data for example purposes)
+// Ramadhan 2025 prayer times (for example purposes)
 // In a real application, this would be calculated based on location or fetched from an API
 export const ramadhanSchedule: DailySchedule[] = [
   {

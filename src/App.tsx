@@ -108,7 +108,7 @@ function App() {
           
           <div className="flex items-center justify-center mb-2">
             <Calendar className="text-green-600 mr-2" size={20} />
-            <p className="text-md font-medium text-gray-700">1 Maret - 29 Maret 2025</p>
+            <p className="text-md font-medium text-gray-700">1 Maret - 30 Maret 2025</p>
           </div>
           
           <div className="flex items-center justify-center space-x-2 mb-6">
@@ -141,7 +141,7 @@ function App() {
               )}
               
               <div className="bg-white rounded-xl shadow-lg p-6 h-full">
-                <h2 className="text-xl font-bold text-gray-800 mb-4">Jadwal Imsakiyah 10 Hari Pertama</h2>
+                <h2 className="text-xl font-bold text-gray-800 mb-4">Jadwal Imsakiyah Ramadhan 1446H</h2>
                 <div className="overflow-x-auto">
                   <table className="min-w-full bg-white">
                     <thead>
@@ -154,7 +154,7 @@ function App() {
                       </tr>
                     </thead>
                     <tbody>
-                      {schedules.slice(1, 11).map((schedule) => {
+                      {schedules.map((schedule) => {
                         const date = new Date(schedule.date);
                         const formattedDate = date.toLocaleDateString('id-ID', {
                           day: 'numeric',
@@ -163,7 +163,7 @@ function App() {
                         
                         return (
                           <tr key={schedule.day} className="border-b hover:bg-gray-50">
-                            <td className="py-2 px-3">{schedule.day-1}</td>
+                            <td className="py-2 px-3">{schedule.day}</td>
                             <td className="py-2 px-3">{formattedDate}</td>
                             <td className="py-2 px-3 font-medium">{schedule.prayerTimes.find(p => p.name === 'Imsak')?.time}</td>
                             <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Subuh')?.time}</td>

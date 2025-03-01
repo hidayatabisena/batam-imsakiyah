@@ -12,13 +12,8 @@ const DigitalClock: React.FC = () => {
       setTime(`${hours}:${minutes}:${seconds}`);
     };
     
-    // Update immediately
     updateClock();
-    
-    // Update every second
     const intervalId = setInterval(updateClock, 1000);
-    
-    // Clean up interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
   

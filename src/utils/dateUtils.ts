@@ -51,7 +51,7 @@ export const convertToDailySchedule = (imsakiyahDays: ImsakiyahDay[], year: stri
     const date = new Date(parseInt(year), month - 1, day.tanggal);
     const dateString = date.toISOString().split('T')[0];
     
-    // Since we're only including March days, the Ramadhan day is the same as the date
+    // Ramadhan day starts from 1
     const ramadhanDay = day.tanggal;
     
     return {
