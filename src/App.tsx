@@ -167,20 +167,17 @@ function App() {
                             month: 'short'
                           });
                           
-                          // Make sure we show all 30 days of Ramadhan
-                          if (index < 30) {
-                            return (
-                              <tr key={index} className="border-b hover:bg-gray-50">
-                                <td className="py-2 px-3">{index + 1}</td>
-                                <td className="py-2 px-3">{formattedDate}</td>
-                                <td className="py-2 px-3 font-medium">{schedule.prayerTimes.find(p => p.name === 'Imsak')?.time}</td>
-                                <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Subuh')?.time}</td>
-                                <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Maghrib')?.time}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
-                        })}
+                          return (
+                            <tr key={index} className="border-b hover:bg-gray-50">
+                              <td className="py-2 px-3">{index + 1}</td>
+                              <td className="py-2 px-3">{formattedDate}</td>
+                              <td className="py-2 px-3 font-medium">{schedule.prayerTimes.find(p => p.name === 'Imsak')?.time}</td>
+                              <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Subuh')?.time}</td>
+                              <td className="py-2 px-3">{schedule.prayerTimes.find(p => p.name === 'Maghrib')?.time}</td>
+                            </tr>
+                          );
+                        })
+                      }
                     </tbody>
                   </table>
                 </div>
