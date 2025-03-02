@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Clock, MapPin, Calendar } from 'lucide-react';
+import { CloudMoon, Clock, MapPin, Calendar } from 'lucide-react';
 import DigitalClock from './components/DigitalClock';
 import DailyScheduleCard from './components/DailyScheduleCard';
 import { DailySchedule, ImsakiyahResponse } from './types';
@@ -11,7 +11,7 @@ function App() {
   const [currentSchedule, setCurrentSchedule] = useState<DailySchedule | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [location, setLocation] = useState<{ provinsi: string; kabkota: string }>({
+  const [location] = useState<{ provinsi: string; kabkota: string }>({
     provinsi: 'Kepulauan Riau',
     kabkota: 'Kota Batam'
   });
@@ -97,7 +97,7 @@ function App() {
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <Moon className="text-green-600 mr-2" size={32} />
+            <CloudMoon className="text-green-600 mr-2" size={32} />
             <h1 className="text-3xl font-bold text-gray-800">Jadwal Imsakiyah Ramadhan 1446H / 2025M</h1>
           </div>
           
