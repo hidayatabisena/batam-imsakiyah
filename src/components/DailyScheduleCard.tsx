@@ -8,8 +8,11 @@ interface DailyScheduleCardProps {
 }
 
 const DailyScheduleCard: React.FC<DailyScheduleCardProps> = ({ schedule, currentTime }) => {
-  // Format the date
+  // Format the date with UTC+7 adjustment
   const dateObj = new Date(schedule.date);
+  // Adjust to UTC+7 (Indonesia time)
+  const indonesiaDate = new Date(dateObj.getTime() + (7 * 60 * 60 * 1000));
+  
   // const formattedDate = dateObj.toLocaleDateString('id-ID', {
   //   weekday: 'long',
   //   year: 'numeric',
@@ -52,7 +55,7 @@ const DailyScheduleCard: React.FC<DailyScheduleCardProps> = ({ schedule, current
     <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-gray-800">
-          Ramadhan Hari ke-{dateObj.getDate()}
+          Ramadhan Hari ke-{indonesiaDate.getDate()}
         </h2>
         <p className="text-gray-600">
           {currentTime.toLocaleDateString('id-ID', {
